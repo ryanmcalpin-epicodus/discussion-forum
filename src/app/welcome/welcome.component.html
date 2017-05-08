@@ -1,0 +1,5 @@
+<h2>Welcome!</h2>
+
+<div *ngFor="let category of categories" (click)="goToDetailPage(category)">
+  <h3><em>{{category.name}}</em></h3>
+</div>
