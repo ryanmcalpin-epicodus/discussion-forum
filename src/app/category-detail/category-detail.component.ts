@@ -17,6 +17,8 @@ export class CategoryDetailComponent implements OnInit {
   categoryId: number;
   categoryToDisplay: Category;
   posts: Post[];
+  nextPostId: number;
+  showForm: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,5 +33,26 @@ export class CategoryDetailComponent implements OnInit {
     });
     this.categoryToDisplay = this.categoryService.getCategoryById(this.categoryId);
     this.posts = this.postService.getPostsByCategoryId(this.categoryId);
+    this.nextPostId = this.postService.getNextId();
+  }
+
+  clickNewPost() {
+    this.showForm = true;
+  }
+
+  addPost(newPost: Post) {
+    this.postService.addPost(newPost);
+    this.showForm = false;
+  }
+
+  showBody(post: Post) {
+    if (post.detailsShown) {
+      post.detailsShown = false;
+    } else {
+      this.posts.forEach(function(e) {
+        e.detailsShown = false;
+      });
+      post.detailsShown = true;
+    }
   }
 }

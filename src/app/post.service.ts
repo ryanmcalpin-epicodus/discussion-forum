@@ -27,4 +27,12 @@ export class PostService {
     }
   }
 
+  getNextId() {
+    return POSTS.length + 1;
+  }
+
+  addPost(newPost: Post) {
+    POSTS.push(newPost);
+  }
+
 }
