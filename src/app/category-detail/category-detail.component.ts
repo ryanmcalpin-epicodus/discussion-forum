@@ -19,6 +19,7 @@ export class CategoryDetailComponent implements OnInit {
   posts: Post[];
   nextPostId: number;
   showForm: boolean = false;
+  title: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +35,7 @@ export class CategoryDetailComponent implements OnInit {
     this.categoryToDisplay = this.categoryService.getCategoryById(this.categoryId);
     this.posts = this.postService.getPostsByCategoryId(this.categoryId);
     this.nextPostId = this.postService.getNextId();
+    this.title = this.categoryToDisplay.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
 
   clickNewPost() {

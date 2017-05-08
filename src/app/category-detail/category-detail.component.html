@@ -1,14 +1,15 @@
-<h3>{{categoryToDisplay.name}}</h3>
+<h2>{{title}}</h2>
 <button (click)="clickNewPost()">New Post</button>
 <app-new-post *ngIf="showForm" [categoryId]="categoryId" [nextPostId]="nextPostId" (newPostSender)="addPost($event)"></app-new-post>
 <div *ngIf="showForm===false">
   <div *ngFor="let post of posts" class="panel panel-default">
-    <div (click)="showBody(post)" class="panel-heading">
+    <div (click)="showBody(post)" class="panel-heading clickable">
       <h3><em>{{post.title}}</em></h3>
     </div>
     <div *ngIf='post.detailsShown' class="panel-body">
       <h4>{{post.content}}</h4>
-      <img src={{post.imageURL}} alt="eh" />
+      <img src={{post.imageURL}} alt="animal post image"/>
+      <p>-{{post.author}}</p>
     </div>
   </div>
 </div>

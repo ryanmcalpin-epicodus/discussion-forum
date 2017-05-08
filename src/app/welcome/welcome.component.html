@@ -1,7 +1,7 @@
 <h2>Welcome!</h2>
 
 <div *ngFor="let category of categories" (click)="goToDetailPage(category)" class="panel panel-default">
-  <div class="panel-body clickable">
+  <div class="panel-heading clickable">
     <h3><em>{{category.name}}</em></h3>
   </div>
 </div>
